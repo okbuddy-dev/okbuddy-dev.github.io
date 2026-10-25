@@ -85,13 +85,12 @@
     section {
       max-width: 860px;
       margin: 0 auto;
-      padding: 1rem 0.5rem;
+      padding: 2.5rem 2rem;
     }
 
     /* ── Hero ── */
     .hero {
       padding-top: 2rem;
-      padding-bottom: 1rem;
     }
 
     .hero h1 {
@@ -100,7 +99,7 @@
       color: var(--heading);
       font-weight: 400;
       line-height: 1.2;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
       letter-spacing: -0.02em;
     }
 
@@ -222,6 +221,20 @@
     }
 
     /* ── Contact ── */
+    .contact-inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .contact-portrait {
+      width: 150px;
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
     .contact-text {
       font-size: 1.05rem;
       color: var(--text-dim);
@@ -242,7 +255,7 @@
     .socials {
       display: flex;
       gap: 1.5rem;
-      margin-top: 2.5rem;
+      margin-top: 2rem;
     }
 
     .socials a {
@@ -272,7 +285,7 @@
     footer {
       max-width: 860px;
       margin: 0 auto;
-      padding: 3rem 2rem;
+      padding: 2.5rem 2rem;
       border-top: 1px solid var(--border);
       text-align: center;
       font-size: 0.8rem;
@@ -283,7 +296,7 @@
     @media (max-width: 640px) {
       .project-card {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 1.5rem;
       }
 
       .project-card img {
@@ -292,9 +305,7 @@
 
       nav ul { gap: 1.25rem; }
 
-      section { padding: 3.5rem 1.5rem; }
-
-      .hero { padding-top: 5rem; padding-bottom: 4rem; }
+      .contact-inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -357,19 +368,24 @@
   <!-- Contact -->
   <section id="contact">
     <div class="section-label">Contact</div>
-    <p class="contact-text">
-      Want to get in touch? Reach out at <a href="mailto:buddy-nvbv.trophy104@passinbox.com">buddy@okbuddy.dev</a> — I'm always happy to hear from people.
-    </p>
+    <div class="contact-inner">
+      <img class="contact-portrait" src="max-headroom.jpg" alt="Max Headroom winking" width="355" height="281">
+      <div>
+        <p class="contact-text">
+          W-w-want to get in touch? Reach out at <a href="mailto:buddy-nvbv.trophy104@passinbox.com">buddy@okbuddy.dev</a> — no signal is too strange. I've seen the future. It works, mostly.
+        </p>
 
-    <div class="socials">
-      <a href="https://github.com/okbuddy-dev">
-        <img src="github.svg" alt="GitHub">
-        GitHub
-      </a>
-      <a href="https://okbuddy-dev.bsky.social">
-        <img src="bsky.svg" alt="Bluesky">
-        Bluesky
-      </a>
+        <div class="socials">
+          <a href="https://github.com/okbuddy-dev">
+            <img src="github.svg" alt="GitHub">
+            GitHub
+          </a>
+          <a href="https://okbuddy-dev.bsky.social">
+            <img src="bsky.svg" alt="Bluesky">
+            Bluesky
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
