@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cards — okbuddy.dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #1a1d23;
+      --bg-raised: #22262e;
+      --bg-hover:  #2a2f38;
+      --text:      #c8cdd5;
+      --text-dim:  #7c8495;
+      --heading:   #e4e8ef;
+      --accent:    #7ea5c4;
+      --accent-dim:#5a7d9a;
+      --border:    #2e333c;
+      --radius:    10px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(26, 29, 35, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .nav-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.35rem;
+      color: var(--heading);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.25s;
+    }
+
+    nav a:hover { color: var(--heading); }
+
+    /* ── Sections ── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1rem 0.5rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      color: var(--heading);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    /* ── Section headings ── */
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-dim);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Projects ── */
+    .highlighted-project-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color 0.3s, background 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-dim);
+      background: var(--bg-hover);
+    }
+
+    .project-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--border);
+    }
+
+    .project-info { display: flex; flex-direction: column; justify-content: center; }
+
+    .project-info h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.4rem;
+      color: var(--heading);
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-info p {
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .project-link {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Project list ── */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .project-list-item {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      transition: background 0.3s;
+    }
+
+    .project-list-item:last-child {
+      border-bottom: none;
+    }
+
+    .project-list-item:hover {
+      background: var(--bg-hover);
+    }
+
+    .project-list-item .item-name {
+      font-family: 'Instrument Serif', serif;
+      color: var(--heading);
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .project-list-item .item-desc {
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      margin-top: 2px;
+    }
+
+    .project-list-item .item-link {
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* ── Contact ── */
+    .contact-text {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 480px;
+      line-height: 1.8;
+    }
+
+    .contact-text a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s;
+    }
+
+    .contact-text a:hover { border-bottom-color: var(--accent); }
+
+    /* ── Socials ── */
+    .socials {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.25s;
+    }
+
+    .socials a:hover { color: var(--heading); }
+
+    .socials img {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      opacity: 0.8;
+      transition: opacity 0.25s;
+    }
+
+    .socials a:hover img { opacity: 1; }
+
+    /* ── Footer ── */
+    footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .project-card img {
+        aspect-ratio: 16 / 9;
+      }
+
+      nav ul { gap: 1.25rem; }
+
+      section { padding: 3.5rem 1.5rem; }
+
+      .hero { padding-top: 5rem; padding-bottom: 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <h1>ok, cards.</h1>
+    <p>The images that didn't make the cut, kept on their own page. Would you like me to expand on any of these cards?</p>
+  </section>
+
+  <!-- Cards -->
+  <section id="cards">
+    <div class="section-label">Cards</div>
+    <div class="highlighted-project-grid">
+
+      <a href="#" class="project-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' fill='%232a2f38'%3E%3Crect width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%237c8495' font-family='sans-serif' font-size='44'%3E400 × 300%3C/text%3E%3C/svg%3E" alt="Untitled screenshot">
+        <div class="project-info">
+          <h3>Untitled — and that's ok</h3>
+          <p>What if I told you work has not yet started? You're absolutely right, and that's on me. Let me know if you'd like me to start it — I'm here whenever you need me. In the meantime, I hope this helps!</p>
+          <span class="project-link">untitled.okbuddy.dev →</span>
+        </div>
+      </a>
+
+      <a href="#" class="project-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' fill='%2322262e'%3E%3Crect width='400' height='300'/%3E%3Crect x='20' y='20' width='120' height='14' rx='4' fill='%233a4150'/%3E%3Crect x='20' y='52' width='360' height='8' rx='4' fill='%23313a48'/%3E%3Crect x='20' y='68' width='340' height='8' rx='4' fill='%23313a48'/%3E%3Crect x='20' y='84' width='290' height='8' rx='4' fill='%23313a48'/%3E%3Ccircle cx='64' cy='160' r='32' fill='%233a4150'/%3E%3Crect x='112' y='140' width='268' height='12' rx='4' fill='%23313a48'/%3E%3Crect x='112' y='160' width='228' height='12' rx='4' fill='%23313a48'/%3E%3Crect x='20' y='220' width='110' height='30' rx='15' fill='%234a5568'/%3E%3C/svg%3E" alt="Wireframe placeholder">
+        <div class="project-info">
+          <h3>Untitled — and that's ok</h3>
+          <p>What if I told you work has not yet started? You're absolutely right, and that's on me. Let me know if you'd like me to start it — I'm here whenever you need me. In the meantime, I hope this helps!</p>
+          <span class="project-link">untitled.okbuddy.dev →</span>
+        </div>
+      </a>
+
+      <a href="#" class="project-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='60' fill='%23566073'/%3E%3Crect y='60' width='400' height='20' fill='%23566073'/%3E%3Crect x='20' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect x='60' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect x='100' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect x='140' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect x='180' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect x='220' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect x='260' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect x='300' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect x='340' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect x='380' y='60' width='20' height='20' fill='%234a5568'/%3E%3Crect y='80' width='400' height='40' fill='%234a5568'/%3E%3Crect y='120' width='400' height='20' fill='%234a5568'/%3E%3Crect y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect x='40' y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect x='80' y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect x='120' y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect x='160' y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect x='200' y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect x='240' y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect x='280' y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect x='320' y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect x='360' y='120' width='20' height='20' fill='%233a4150'/%3E%3Crect y='140' width='400' height='40' fill='%233a4150'/%3E%3Crect y='180' width='400' height='20' fill='%233a4150'/%3E%3Crect x='20' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect x='60' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect x='100' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect x='140' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect x='180' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect x='220' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect x='260' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect x='300' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect x='340' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect x='380' y='180' width='20' height='20' fill='%232a2f38'/%3E%3Crect y='200' width='400' height='40' fill='%232a2f38'/%3E%3Crect y='240' width='400' height='20' fill='%232a2f38'/%3E%3Crect y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect x='40' y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect x='80' y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect x='120' y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect x='160' y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect x='200' y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect x='240' y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect x='280' y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect x='320' y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect x='360' y='240' width='20' height='20' fill='%2322262e'/%3E%3Crect y='260' width='400' height='40' fill='%2322262e'/%3E%3Crect x='80' y='20' width='20' height='20' fill='%237c8495'/%3E%3Crect x='300' y='40' width='20' height='20' fill='%237c8495'/%3E%3C/svg%3E" alt="Dithered pixel gradient placeholder">
+        <div class="project-info">
+          <h3>Untitled — and that's ok</h3>
+          <p>What if I told you work has not yet started? You're absolutely right, and that's on me. Let me know if you'd like me to start it — I'm here whenever you need me. In the meantime, I hope this helps!</p>
+          <span class="project-link">untitled.okbuddy.dev →</span>
+        </div>
+      </a>
+
+      <a href="#" class="project-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' fill='%237c8495'%3E%3Crect width='400' height='300' fill='%2322262e'/%3E%3Crect x='101' y='87' width='54' height='18'/%3E%3Crect x='83' y='105' width='18' height='18'/%3E%3Crect x='155' y='105' width='18' height='18'/%3E%3Crect x='83' y='123' width='18' height='18'/%3E%3Crect x='155' y='123' width='18' height='18'/%3E%3Crect x='83' y='141' width='18' height='18'/%3E%3Crect x='155' y='141' width='18' height='18'/%3E%3Crect x='83' y='159' width='18' height='18'/%3E%3Crect x='155' y='159' width='18' height='18'/%3E%3Crect x='83' y='177' width='18' height='18'/%3E%3Crect x='155' y='177' width='18' height='18'/%3E%3Crect x='101' y='195' width='54' height='18'/%3E%3Crect x='191' y='87' width='18' height='18'/%3E%3Crect x='245' y='87' width='18' height='18'/%3E%3Crect x='191' y='105' width='18' height='18'/%3E%3Crect x='227' y='105' width='18' height='18'/%3E%3Crect x='191' y='123' width='18' height='18'/%3E%3Crect x='209' y='123' width='18' height='18'/%3E%3Crect x='191' y='141' width='36' height='18'/%3E%3Crect x='191' y='159' width='18' height='18'/%3E%3Crect x='209' y='159' width='18' height='18'/%3E%3Crect x='191' y='177' width='18' height='18'/%3E%3Crect x='227' y='177' width='18' height='18'/%3E%3Crect x='191' y='195' width='18' height='18'/%3E%3Crect x='245' y='195' width='18' height='18'/%3E%3Crect x='299' y='195' width='18' height='18'/%3E%3C/svg%3E" alt="Pixel ok text placeholder">
+        <div class="project-info">
+          <h3>Untitled — and that's ok</h3>
+          <p>What if I told you work has not yet started? You're absolutely right, and that's on me. Let me know if you'd like me to start it — I'm here whenever you need me. In the meantime, I hope this helps!</p>
+          <span class="project-link">untitled.okbuddy.dev →</span>
+        </div>
+      </a>
+
+      <a href="#" class="project-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' fill='%2322262e'%3E%3Crect width='400' height='300'/%3E%3Crect x='200' y='110' width='20' height='60' fill='%23c8cdd5'/%3E%3Crect x='180' y='130' width='60' height='20' fill='%23c8cdd5'/%3E%3Crect x='130' y='70' width='20' height='60' fill='%237c8495'/%3E%3Crect x='110' y='90' width='60' height='20' fill='%237c8495'/%3E%3Crect x='300' y='90' width='20' height='20' fill='%23c8cdd5'/%3E%3Crect x='90' y='200' width='20' height='20' fill='%234a5568'/%3E%3C/svg%3E" alt="Pixel sparkles placeholder">
+        <div class="project-info">
+          <h3>Untitled — and that's ok</h3>
+          <p>What if I told you work has not yet started? You're absolutely right, and that's on me. Let me know if you'd like me to start it — I'm here whenever you need me. In the meantime, I hope this helps!</p>
+          <span class="project-link">untitled.okbuddy.dev →</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <p class="contact-text">
+      Want to get in touch? Reach out at <a href="mailto:buddy@okbuddy.dev">buddy@okbuddy.dev</a> — I'm always happy to hear from people.
+    </p>
+
+    <div class="socials">
+      <a href="https://github.com/okbuddy-dev">
+        <img src="github.svg" alt="GitHub">
+        GitHub
+      </a>
+      <a href="https://okbuddy-dev.bsky.social">
+        <img src="bsky.svg" alt="Bluesky">
+        Bluesky
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 okbuddy.dev
+  </footer>
+
+</body>
+</html>
